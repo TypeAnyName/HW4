@@ -1,0 +1,66 @@
+# Встречаем пользователя
+print ("Привет! Давай снова проверим твои навыки английского языка")
+print ("")
+print ("Выбери уровень сложности\nлёгкий, средний, сложный")
+
+# Словари
+easy = {"Car":"машина", "Street": "улица","Door": "дверь","Food": "еда", "Sky": "небо"}
+medium = {"Wheel":"колесо","Sword": "меч","Watermalon":'арбуз',"Sneakers":"кроссовки","Pull":"толкать"}
+hard = {"Forget": "забывать", "Spoon": "ложка", "Slide": "скользить", "Prison": "тюрьма", "Engine": "двигатель"}
+answers = {}
+levels = {
+   0: "Нулевой", 
+   1: "Так себе", 
+   2: "Можно лучше", 
+   3: "Норм", 
+   4: "Хорошо", 
+   5: "Отлично",
+}
+score = 5
+
+# Условия выбора сложности
+user_level=input()
+if user_level == "лёгкий":
+  words = (easy)
+elif user_level == "средний":
+  words = (medium)
+elif user_level == "сложный":
+  words = (hard)
+else:
+  print("Вы ввели неизвестный уровень сложности.\nАвтоматически выбран высокий уровень сложности")
+  pass
+
+
+# Цикл вопросов
+print("")
+print(f"Выбран уровень сложности, мы предложим вам 5 слов, подберите перевод")
+print("")
+
+for i,b in words.items():
+  print("")
+  print(f'{i}, букв: {len(b)}, начинается на {b[0]}...')
+  user_answer = input()
+  if user_answer == b:
+    print("")
+    print(f"Верно! {i} это {b}")
+    answers[i] = True
+  else:
+    print('')
+    print(f"Неверно. {i} это {b}")
+    answers[i] = False
+    score -= 1
+
+# Показ результата
+print('')
+print(f"Правильно отвеченные слова:")
+for i,b in answers.items():
+  if b == True:
+    print(i)
+print(f"Неправильно отвеченные слова:")
+for i,b in answers.items():
+  if b == False:
+    print(i)
+print('')
+
+# Определение уровня знания английского
+print(f'Ваш уровень знания Английского : {levels[score]}\nСпасибо что прошли наш тест!')
